@@ -1,0 +1,21 @@
+
+name: PR Status Simulator
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+
+permissions:
+  contents: read
+
+jobs:
+  pr-status:
+    name: PR Status Simulator
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify workflow execution
+        run: |
+          echo "Workflow executed successfully"
+          echo "Event: ${{ github.event_name }}"
+          echo "Branch: ${{ github.head_ref || github.ref_name }}"
